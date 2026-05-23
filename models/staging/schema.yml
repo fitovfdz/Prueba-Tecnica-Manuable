@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: ecom_raw
+    description: "Fuente que contiene las 4 tablas crudas de la prueba tecnica Manuable"
+    database: pruebatecnica-manuable
+    schema: raw
+    tables:
+      - name: customers
+        description: "Clientes registrados"
+      - name: orders
+        description: "Historial de órdenes de compra"
+      - name: products
+        description: "Catálogo de productos disponibles"
+      - name: order_items
+        description: "Cantidad de productos por orden de compra"
+#------------------------------------------------------------------Test Genericos
+
+models:
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+              
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
