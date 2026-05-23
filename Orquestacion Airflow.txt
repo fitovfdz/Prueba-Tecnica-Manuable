@@ -1,0 +1,13 @@
+Estrategia de orquestación:
+
+Debido a que no tengo experiencia en Airflow y no he usado Phyton, no genere el .py solicitado pero para asegurar que los datos fluyan correctamente, mi propuesta es automatizar el proceso en Airflow con el siguiente orden de ejecución:
+
+Staging: dbt run seguido de dbt test para validar la calidad desde el origen.
+
+Intermediate: dbt run seguido de dbt test para procesar las transformaciones intermedias.
+
+Marts: dbt run y finalmente dbt test para verificar los resultados finales.
+
+Justificación:
+
+El flujo está diseñado para que cada paso dependa del anterior. Si alguna prueba falla, el proceso se detiene. La idea es que los datos no lleguen a los reportes finales si hay algún error en el camino, así nos aseguramos de que la información siempre esté limpia y confiable.

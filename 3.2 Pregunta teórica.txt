@@ -1,0 +1,10 @@
+3.2 Pregunta teórica (5 pts) 
+Responde en máximo 150 palabras: 
+¿Qué estrategia usarías para manejar tablas grandes en BigQuery (más de 500 
+millones de filas) dentro de tus modelos dbt? Menciona al menos dos conceptos 
+específicos de dbt o BigQuery que aplicarías. 
+
+
+Particionamiento y Clustering: Particionaría las tablas por fecha y aplicaría clustering en columnas de consulta frecuente. Esto permite a BigQuery escanear solo los datos necesarios en lugar de toda la tabla, lo que acelera todo.
+
+Modelos Incremental en dbt: Configuraría mis modelos como incremental para que dbt procese únicamente la información nueva desde la última ejecución, en lugar de reprocesar todo el histórico.
